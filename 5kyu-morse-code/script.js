@@ -51,7 +51,7 @@ decodeMorse = function (morseCode) {
         } else {
   
           outputArr.push(char); 
-        }
+        }   
       } 
     }
   })
