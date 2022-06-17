@@ -49,7 +49,7 @@ decodeMorse = function (morseCode) {
           outputArr.push("space"); 
 
         } else {
-
+  
           outputArr.push(char); 
         }
       } 
