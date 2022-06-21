@@ -76,35 +76,39 @@ function getPINs(observed) {
     proArr.push(probableTable[number[num]])
   }
 
-  // console.log(number.length);
+  // 1. 몇번째 자릿수까지 만들어야 하는지를 판단
+  // 2. 첫번재 배열에서 한개의 값을 고정
+  // 3. 나머지 남은 자리에서 한자리 값을 고정
+  // 4. ... 마지막 자리에서 배열을 차례대로 추가
 
-  // for(let i = 0 ; i < proArr.length; i ++) {
-  //   console.log(proArr[i])
+  // let resultArr = [];
+  // for (let i = 0 ; i < proArr.length; i++ ) {
+  //   const testArr = [];
+  //   for (let j = 0 ; j < proArr[i].length ; j ++) {
+  //     testArr.push(proArr[i][j]);
+  //     testArr.forEach((v) => {
+  //       console.log(v, proArr[i][j]);
+  //     })
+  //   }
   // }
 
-  // for(let i ; i < proArr.length ; i ++) {
-    
-  //   console.log(i);
-  // }
+  console.log(proArr);
+  const resultArr = [];
+  proArr.forEach((v, i, arr) => {
+    let currentArr = v; // 현재 배열
+    let nextArr = arr[i+1]; // 다음 배열
+    currentArr.forEach((cv, ci) => {
+      console.log(cv, ci)
+      if(nextArr !== undefined) {
+        nextArr.forEach((ccv, cci) => {
+          resultArr.push([cv , ccv])
+        })
+      }
+    })
+    // console.log(v, i, arr[i+1])
+    console.log(resultArr)
+  })
 
-  let resultArr = [];
-  for (let i = 0 ; i < proArr.length; i++ ) {
-    const testArr = [];
-    for (let j = 0 ; j < proArr[i].length ; j ++) {
-      testArr.push(proArr[i][j]);
-      testArr.forEach((v) => {
-        console.log(v, proArr[i][j]);
-        // resultArr.push(v);
-      })
-      
-      // console.log(i,j)
-    }
-    // console.log(testArr)
-    // console.log('----')
-  }
-
-
-  // console.log(resultArr)
   let result = [];
 
   return number
@@ -112,5 +116,5 @@ function getPINs(observed) {
 
 
 // console.log(getPINs("8"))
-console.log(getPINs("86"))
+console.log(getPINs("8"))
 // console.log(getPINs("821"))
