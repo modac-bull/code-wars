@@ -31,7 +31,7 @@ lastDigit("10","10000000000")  // returns 0
 
 1. 
 
-str1 의 끝자리가 1일 경우
+str1 의 끝자리 경우의 수에 따라 다름
 1 ..
 2 4 8 6 ...
 3 9 7 1 ...
@@ -46,46 +46,58 @@ str1 의 끝자리가 1일 경우
 */
 
 var lastDigit = function(str1, str2){  
-  let num1 = Number(str1)%10;
-  let num2 = Number(str2)%10;
-  let lastNumber = undefined;
+  let gab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((pv, cv) => {
+    return cv*pv
+  }, 1)
+  let num1 = Number(str1.split('')[str1.split('').length - 1]);
+  let num2 = undefined;
+  if (Number(str2) > Number.MAX_SAFE_INTEGER) {
+    // 15 자릿수 이하로 떨어지게 처리하는 방안을 모르겠는데요..?
+    console.log(gab, "초과")
+  } else {
+    return Number(str2)%gab;
+  }
+  const tableOrder = {
+    0: [0],
+    1 : [1],
+    2 : [2, 4, 8, 6],
+    3 : [3, 9, 7, 1],
+    4 : [4, 6],
+    5 : [5],
+    6 : [6],
+    7 : [7, 9, 3, 1],
+    8 : [8, 4, 2, 6],
+    9 : [9, 1]
+  }
 
+  console.log(str1, num2)
+  
   function lastNumber(num1, num2) {
-    let 
-    for(i = 0 ; i < num2 ; i++) {
-      num1
+    let repeatArr = tableOrder[num1];
+
+    if(num2%(repeatArr.length) === 0) {
+      return repeatArr[repeatArr.length - 1]
+    } else {
+      return repeatArr[num2%repeatArr.length - 1]
     }
-    return
-  }
-  switch(num1) {
-    case 1 :
-      num2%4
-      break;
-    case 2 :
-      break;
-    case 3 :
-      break;
-    case 4 :
-      break;
-    case 5 :
-      break;
-    case 6 :
-      break;
-    case 7 :
-      break;
-    case 8 :
-      break;
-    case 9 :
-      break;
-    case 0 :
-      break;
   }
 
-  return (str1 === '0' && str2 === '0') ? 1 :  resultNumber%10 ; // fix me
+  if( Number(str2) == 0) {
+    return 1
+  } else {
+    return lastNumber(num1, num2)
+  }
 }
+
+console.log((68819615221552997273737174557165657483427362207517952651)%4);
+
 console.log(
   lastDigit("4", "1"),
+  lastDigit("4", "2"),
+  lastDigit("3", "2"),
   lastDigit("9", "7"),
+  lastDigit("0", "0"),
+  lastDigit("23", "0"),
   lastDigit("10", "10000000000"),
   lastDigit("1606938044258990275541962092341162602522202993782792835301376", "2037035976334486086268445688409378161051468393665936250636140449354381299763336706183397376"),
   lastDigit("3715290469715693021198967285016729344580685479654510946723", "68819615221552997273737174557165657483427362207517952651")
