@@ -22,18 +22,38 @@ Output NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
 ASCII 코드
 1. 65~77 -> 78~90 (+13)
 2. 97~109 -> 110~122 (+13)
+
+++ 정리 필요한 부분
+- ASCII 코드 변환 문자열 <-> 아스키코드
 */
 
 
 function rot13(str) {
   let charArr = str.split('');
-  console.log(charArr)
-  charArr.map((v, i) =>{
+  let resultArr =   charArr.map((v, i) =>{
     let asciChar = v.charCodeAt()
-    console.log(asciChar)
+    if(asciChar >= 65 && asciChar <=77) {
+      asciChar+=13;
+      let char = String.fromCharCode(asciChar)
+      return char;
+    } else if( asciChar >= 78 && asciChar <= 90) {
+      asciChar -= 13;
+      let char = String.fromCharCode(asciChar)
+      return char;
+    } else if (asciChar >= 97 && asciChar <= 109) {
+      asciChar += 13;
+      let char = String.fromCharCode(asciChar);
+      return char;
+    } else if (asciChar >= 110 && asciChar <= 122) {
+      asciChar -= 13;
+      let char = String.fromCharCode(asciChar);
+      return char;
+    } else {
+      let char = v
+      return char;
+    }
   })
-  return str
-
+  return resultArr.join('')
 }
 
 console.log(
