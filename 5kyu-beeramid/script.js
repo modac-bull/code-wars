@@ -37,5 +37,28 @@ output
 */
 // Returns number of complete beeramid levels
 var beeramid = function(bonus, price) {
+
+
+  function pyramidTotalCnt(n) {
+    let result = 0;
+    for( i=0; i<n; i++) {
+      result += (i + 1)**2
+    }
+    return result
+  }
   
+  console.log(
+    pyramidTotalCnt(1),
+    pyramidTotalCnt(2),
+    pyramidTotalCnt(3),
+    pyramidTotalCnt(4),
+    pyramidTotalCnt(5),
+    pyramidTotalCnt(6),
+  )
+
+  // 1, 5, 14, 30, 55 , 91 ... 이 숫자들 인접한 값을 찾는 문제인가?
 }
+
+console.log(
+  beeramid(1500, 4)
+)
