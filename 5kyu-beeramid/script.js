@@ -39,36 +39,64 @@ output
 
 */
 // Returns number of complete beeramid levels
-var beeramid = function(bonus, price) {
+// var beeramid = function(bonus, price) {
+//   if(bonus < 0) {
+//     return 0
+//   }
 
-  let maxCnt = Math.floor(bonus/price);
+//   let maxCnt = Math.floor(bonus/price);
 
-  function pyramidTotalCnt(n) {
-    let result = 0;
-    for( i=0; i<n; i++) {
-      result += (i + 1)**2
-    }
-    return [n, result]
+//   function pyramidTotalCnt(n) { // n층 까지의 피라미드 총 갯수를 반환하는 함수
+//     let result = 0;
+//     for( i=0; i<n; i++) {
+//       result += (i + 1)**2
+//     }
+//     return result
+//   }
+
+//   let floor = 0;
+//   while (true) {
+//     if (pyramidTotalCnt(floor) > maxCnt) {
+//       return floor - 1
+//     }
+//     floor++;
+//   }
+  
+
+
+//   // 1. 1회부터 천천히 돌리는데, pyramidTotaclCnt(n) 보다 커지는 시점에서 n-1 값을 반환
+
+  
+  
+
+//   // 1, 5, 14, 30, 55 , 91 ... 이 숫자들 인접한 값을 찾는 문제인가?
+// }
+
+// console.log(
+//   beeramid(-1, 4)
+// )
+
+
+
+// 리팩토링 
+// Returns number of complete beeramid levels
+var beeramid = function (bonus, price) {
+  if (bonus < 0) {
+    return 0
   }
-
-
-  // 1. 1회부터 천천히 돌리는데, pyramidTotaclCnt(n) 보다 커지는 시점에서 n-1 값을 반환
-
-  
-  
-  
-  console.log(
-    pyramidTotalCnt(1),
-    pyramidTotalCnt(2),
-    pyramidTotalCnt(3),
-    pyramidTotalCnt(4),
-    pyramidTotalCnt(5),
-    pyramidTotalCnt(6),
-  )
-
-  // 1, 5, 14, 30, 55 , 91 ... 이 숫자들 인접한 값을 찾는 문제인가?
+  let maxCnt = Math.floor(bonus / price);
+  function pyramidTotalCnt(n) { 
+    let result = 0;
+    for (i = 0; i < n; i++) {
+      result += (i + 1) ** 2
+    }
+    return result
+  }
+  let floor = 0;
+  while (true) {
+    if (pyramidTotalCnt(floor) > maxCnt) {
+      return floor - 1
+    }
+    floor++;
+  }
 }
-
-console.log(
-  beeramid(1500, 4)
-)
