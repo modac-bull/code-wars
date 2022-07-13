@@ -15,7 +15,33 @@ Examples
 ""                                        =>  false
 */
 
+
+/* 
+1. 띄어쓰기를 기준으로 단어 단위로 배열을 반환
+2. 각 배열의 원소 값의 시작값 대문자로 변경
+2-1. 소문자일 경우 => 대문자로 (정규표현식 활용 필요해보임)
+2-2. 대문자일 경우 그대로
+
+(예외)
+- 결과값이 140글자 이상일 경우엔 false 반환
+- 인풋 또는 결과값이 빈문자열일 경우 false 반환
+
+*/
+
+
 function generateHashtag (str) {
+  let cahrArr = str.split(' '); 
+
+  cahrArr.map((word, i) => {
+    // let firstChar = word[0]
+    // if (firstChar)
+    let firstCodeNum = word.charCodeAt(0);
+    if (firstCodeNum >= 97 && firstCodeNum <= 122) {
+      
+    }
+    console.log(word[0], String.fromCharCode(firstCodeNum + 32))
+  })
+  return cahrArr;
 }
 
 
