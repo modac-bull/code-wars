@@ -30,23 +30,34 @@ Examples
 
 
 function generateHashtag (str) {
-  let cahrArr = str.split(' '); 
+  if (typeof str == undefined || str == null || str.length == 0 || str == " ") {
+    return false
+  }
+  let charArr = str.split(' '); 
+  
 
-  cahrArr.map((word, i) => {
-    // let firstChar = word[0]
-    // if (firstChar)
-    let firstCodeNum = word.charCodeAt(0);
+  let resultArr = charArr.map((word, i) => {
+    let firstCodeNum = word.charCodeAt(0); 
     if (firstCodeNum >= 97 && firstCodeNum <= 122) {
-      
+      let outputArr = word.split('')
+      outputArr.shift()
+      outputArr.unshift(String.fromCharCode(firstCodeNum - 32))
+     
+      return outputArr.join('')
+    } else {
+      return word
     }
-    console.log(word[0], String.fromCharCode(firstCodeNum + 32))
   })
-  return cahrArr;
+  if(resultArr.join('').length >= 140) {
+    return false
+  }
+  return '#' + resultArr.join('');
 }
 
 
 console.log(
-  generateHashtag(""),
+  generateHashtag(" "),
+  generateHashtag("     "),
   generateHashtag("Do We have A Hashtag"),
   generateHashtag("Codewars"),
   generateHashtag("Codewars Is Nice"),
