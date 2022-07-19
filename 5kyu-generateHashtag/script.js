@@ -30,11 +30,17 @@ Examples
 
 
 function generateHashtag (str) {
+  const spaceReg = /\s+/;
   if (typeof str == undefined || str == null || str.length == 0 || str == " ") {
     return false
   }
-  let charArr = str.split(' '); 
   
+  
+  // 띄어쓰기 여러개일 경우엔 예외처리 어떻게 하는가?
+  // 정규표현식 띄어쓰기 제거 검색
+  let charArr = str.split(/\s+/); 
+
+  console.log(str.spaceReg());
 
   let resultArr = charArr.map((word, i) => {
     let firstCodeNum = word.charCodeAt(0); 
@@ -56,9 +62,10 @@ function generateHashtag (str) {
 
 
 console.log(
-  generateHashtag(" "),
-  generateHashtag("     "),
+  generateHashtag(""),
+  generateHashtag("                 "),
   generateHashtag("Do We have A Hashtag"),
+  generateHashtag("Do We have A     Hashtag"),
   generateHashtag("Codewars"),
   generateHashtag("Codewars Is Nice"),
   generateHashtag("Codewars is nice"),
