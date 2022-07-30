@@ -31,7 +31,7 @@ Examples
 
 function generateHashtag (str) {
   const spaceReg = /\s+/;
-  if (typeof str == undefined || str == null || str.length == 0 || str == " ") {
+  if (typeof str == undefined || str == null || str.length == 0 || !str.replace(/\s/g, '').length) {
     return false
   }
   
@@ -40,7 +40,7 @@ function generateHashtag (str) {
   // 정규표현식 띄어쓰기 제거 검색
   let charArr = str.split(/\s+/); 
 
-  console.log(str.spaceReg());
+  console.log(!str.replace(/\s/g, '').length);
 
   let resultArr = charArr.map((word, i) => {
     let firstCodeNum = word.charCodeAt(0); 
@@ -63,6 +63,8 @@ function generateHashtag (str) {
 
 console.log(
   generateHashtag(""),
+  generateHashtag(" "),
+  generateHashtag("  "),
   generateHashtag("                 "),
   generateHashtag("Do We have A Hashtag"),
   generateHashtag("Do We have A     Hashtag"),
