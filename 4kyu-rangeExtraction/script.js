@@ -16,13 +16,30 @@ Example:
 // returns "-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
 
 
+문제 정의
+1. 배열의 원소가 3개 이상 연속될 경우에 '-' 대시로 연결하여 표현할 것
+2. 나머지는 그냥 원소로 배열
+3. 최종 결과는 "string" 형태
+
+접근 방법
+1. reduce 활용해야 하는가?
+  - 연속 3개 이상임을 어떻게 판별할건지?
+
+2안 
+
 */
 
 function solution(list) {
-  // TODO: complete solution 
+  let listArr = list;
+  list.reduce((pv, cv) => {
+    console.log(pv, cv)
+    if((pv + 1) === cv) {
+      console.log(cv, '연속된 수', pv)
+    }
+    return cv
+  }, "")
 
-
-  return "123"
+  return list
 }
 
 
