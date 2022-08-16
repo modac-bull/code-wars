@@ -7,7 +7,8 @@ Note: Only valid inputs will be given.
 
 function booleanToString(b){
   //your code here
-  return b
+  let inputString = String(b)
+  return inputString
 }
 
 console.log(booleanToString(true))
