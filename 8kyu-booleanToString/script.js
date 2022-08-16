@@ -1,20 +1,16 @@
-console.log("script!")
-const flip = (d, a) => {
-  //TODO
-  if (d === 'R') {
-    return a.sort();
-  } else {
-    return a.sort().reverse()
-  }
+/* 
+Implement a function which convert the given boolean value into its string representation.
+
+Note: Only valid inputs will be given.
+
+*/
+
+function booleanToString(b){
+  //your code here
+  return b
 }
 
-
-console.log(
-  flip("R", [13, 2, 4, 7, 93])
-)
+console.log(booleanToString(true))
+console.log(booleanToString(false))
 
 
-console.log(
-
-  [13,2,4,7,93].sort()
-)
