@@ -18,10 +18,17 @@ The second value in the first integer array is 0, since the bus is empty in the 
 
 var number = function(busStops){
   // Good Luck!
+  let cntOnboard = [];
+  let cntQuit = [];
   busStops.forEach(element => {
-    console.log(element)
+    cntOnboard.push(element[0])
+    cntQuit.push(element[1])
+    
   });
-  // return busStops
+  function sumArr(arr) {
+    return arr.reduce((pv, cv) => pv + cv , 0)
+  }
+  return sumArr(cntOnboard) - sumArr(cntQuit)
 }
 
 console.log(number([[10,0],[3,5],[5,8]]))
