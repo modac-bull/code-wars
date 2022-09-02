@@ -30,10 +30,23 @@ N행 시작 숫자 = N^2 - (N - 1)
 
 function rowSumOddNumbers(n) {
 	// TODO
+  let oddArr = [];
+  let firstNum = Math.pow(n, 2) - (n - 1);
+
+  for(i=0; i < n ; i++) {
+    console.log(i)
+    oddArr.push(firstNum);
+    firstNum += 2;
+  }
+  return oddArr.reduce((pv, cv) => { return pv + cv}, 0);
+
 }
 
 
 
 
 
-console.log()
+console.log(
+  rowSumOddNumbers(3),
+  rowSumOddNumbers(5)
+  )
