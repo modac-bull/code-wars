@@ -1,16 +1,16 @@
-console.log("script!")
 const flip = (d, a) => {
   //TODO
   if (d === 'R') {
-    return a.sort();
+    return a.sort((a, b) => a - b );
   } else {
-    return a.sort().reverse()
+    return a.sort((a, b) => b - a)
   }
 }
 
 
 console.log(
-  flip("R", [13, 2, 4, 7, 93])
+  flip("R", [13, 2, 4, 7, 93]),
+  flip("L", [13, 2, 4, 7, 93])
 )
 
 
