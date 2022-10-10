@@ -17,12 +17,14 @@ Hint: Don't forget to check for bad values like null/undefined
 
 function countSheeps(arrayOfSheep) {
   // TODO May the force be with you
+  let cnt = 0;
   arrayOfSheep.reduce((pv, cv) => {
     if(cv) {
-      pv++
+      return cnt++
     }
   }, 0)
-  return arrayOfSheep
+
+  return cnt
 }
 
 
