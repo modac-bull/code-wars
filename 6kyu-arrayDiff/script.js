@@ -10,35 +10,54 @@ If a value is present in b, all of its occurrences must be removed from the othe
 arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
 
+1. b의 원소 하나 선택되었다..?
+- 
+
+
 */
 
 
 function arrayDiff(a, b) {
-  if(b.length === 0) {
-    return a
-  }
-  b.forEach((v) => {
-    // console.log(v, '----')
-    a = a.filter((v2) => {
-      if(v2 === v) {
-        console.log(v, v2)
-        console.log("값 일치")
-      } else {
-        console.log(v, v2)
-        console.log("값 불 일치", v2)
-        // let changeNumber = Number(v2);
-        return 
+  let arr  = [];
+  b.forEach(elem => {
+    // console.log(element)
+    a.forEach((v,i) => {
+      console.log(v,elem,   i)
+      if(elem != v) {
+        arr.push(v)
       }
     })
-  })
-  return a
+    console.log(arr);
+
+  });
+ return arr
 }
+// function arrayDiff(a, b) {
+//   if(b.length === 0) {
+//     return a
+//   }
+//   b.forEach((v) => {
+//     // console.log(v, '----')
+//     a = a.filter((v2) => {
+//       if(v2 === v) {
+//         console.log(v, v2)
+//         console.log("값 일치")
+//       } else {
+//         console.log(v, v2)
+//         console.log("값 불 일치", v2)
+//         // let changeNumber = Number(v2);
+//         return 
+//       }
+//     })
+//   })
+//   return a
+// }
 
 
 
 
 console.log(
-  // arrayDiff([1,2,4,5,6,1,2,3,5], [1,2]),
-  arrayDiff([1,2,0], [1]),
+  arrayDiff([1,2,4,5,6,1,2,3,5], [1,2]),
+  // arrayDiff([1,2,0], [1]),
   // arrayDiff([1,2,3], [1,2])
 )
