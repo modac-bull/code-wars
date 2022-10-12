@@ -31,25 +31,25 @@ Don't forget to convert the percent parameter as a percentage in the body of you
 */
 
 
-
 function nbYear(p0, percent, aug, p) {
-  let result = function(n) {
-    if( n <= 1) {
-      return 1
+  let population = p0;
+  let year = 1;
+  console.log(p0, percent, aug, p)
+  while(true) {
+    population = Math.floor(population*(1 + percent/100) + aug);
+    if(population > p) {
+      return year
+    } else if (population === p) {
+      return year ;
     }
-    return n + result(n-1);
+    year++;
   }
-  console.log(result(10))
-  // while ( result < p) {
-  //   console.log(p);
-  // }
-  return years
-  // your code
 }
 
 
 console.log(
-  nbYear(1500, 5, 100, 5000),
+  nbYear(1000, 2, 50, 1214),
   nbYear(1500000, 2.5, 10000, 2000000),
-  nbYear(1500000, 0.25, 1000, 2000000)
+  nbYear(1500000, 0, 10000, 2000000),
+  nbYear(1000, 2, 50, 1214)
 )
