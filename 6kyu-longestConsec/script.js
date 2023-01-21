@@ -29,16 +29,48 @@ consecutive strings : follow one after another without an interruption
 
 */
 
+function longestConsec(strarr, k) {
+  if (k < 0) {
+    return "";
+  }
+  // your code
+  let NumberArr = strarr.map((word) => word.length);
 
+  console.log(NumberArr);
 
+  function FindMaxNum () {
+    
+  }
 
+  for(let i = 0; i<k; i++) {
+    console.log(i)
+  }
 
+  let MaxChar = NumberArr.reduce((pv, cv) => {
+    if (cv >= pv) {
+      return cv
+    } else {
+      return pv
+    }
+  },0)
 
+  console.log(MaxChar)
 
-var obj1 = { c : 10, d: 'ddd'};
-var obj2 = obj1;
+  return { strarr, k };
+}
 
-// obj2.d = 20
-obj2 = { c : 10, d : 20}
-
-console.log(obj1, obj2)
+console.log(
+  longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2)
+);
+console.log(
+  longestConsec(
+    [
+      "ejjjjmmtthh",
+      "zxxuueeg",
+      "aanlljrrrxx",
+      "dqqqaaabbb",
+      "oocccffuucccjjjkkkjyyyeehh",
+    ],
+    1
+  )
+);
