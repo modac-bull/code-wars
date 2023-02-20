@@ -1,7 +1,9 @@
 /* 
 
 설명 : 
-Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+Write a function that takes a string of parentheses, 
+and determines if the order of the parentheses is valid. 
+The function should return true if the string is valid, and false if it's invalid.
 
 Examples
 "()"              =>  true
@@ -20,40 +22,40 @@ Constraints
   
 */
 
-
 function validParentheses(parens) {
   // your code here ..
-  let parensArr = parens.split('');
+  let parensArr = parens.split("");
   let firstChar = parensArr[0];
   let lastChar = parensArr[parensArr.length - 1];
-  if(parens === '') {
-    return true
+  let leftParensCnt = 0;
+  let rightParensCnt = 0;
+  if (parens === "") {
+    return true;
   }
-  if(( firstChar !== '(') || ( lastChar !== ')') || ( parensArr.length % 2 !== 0 )) {
-    return false
-  } else { 
-    console.log( parensArr.length )
-    let leftParensCnt = 0;
-    let rightParensCnt = 0;
+  if (firstChar !== "(" || lastChar !== ")" || parensArr.length % 2 !== 0) {
+    return false;
+  } else {
+    // for문으로 변경하자
     parensArr.forEach((v, i) => {
-      if ( v === '(') {
-        leftParensCnt++
+      if (v === "(") {
+        leftParensCnt++;
       } else {
-        rightParensCnt++
+        rightParensCnt++;
       }
-    })
-    if(leftParensCnt === rightParensCnt) {
-      return true
+      debugger;
+      console.log(leftParensCnt, rightParensCnt);
+      if (leftParensCnt < rightParensCnt) {
+        return false;
+      }
+    });
+
+    if (leftParensCnt === rightParensCnt) {
+      return true;
     } else {
-      return false
+      return false;
     }
   }
-};
+}
 
-
-
-
-console.log(
-  validParentheses('(()(())((())))')
-
-)
+console.log(validParentheses("(()(())((())))"));
+console.log(validParentheses("())(()")); // false이어야 함
