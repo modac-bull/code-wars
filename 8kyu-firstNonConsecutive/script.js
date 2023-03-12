@@ -26,14 +26,21 @@ Nim: none(int) (See options)
 */
 
 function firstNonConsecutive(arr) {
-  let flag = false;
+  let isNonConsecutiveflag = false;
   let result = null;
-  let result2 = arr.reduce((pv, cv, idx) => {
+  let result2 = null;
+  arr.reduce((pv, cv, idx) => {
+    // console.log(pv, cv, idx )
     if (cv === pv + 1) {
+      console.log('1',cv, idx)
+      if (idx === arr.length - 1) {
+        result2 = null;
+      }
       return cv;
     } else {
-      if (!flag) {
-        flag = true;
+      console.log('2',cv, idx)
+      if (!isNonConsecutiveflag) {
+        isNonConsecutiveflag = true;
         result = arr[idx];
       }
     }
@@ -41,6 +48,7 @@ function firstNonConsecutive(arr) {
   return result ? result : result2;
 }
 
-console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
-console.log(firstNonConsecutive([1, 2, 3, 4]));
-console.log(firstNonConsecutive([1]));
+// console.log(firstNonConsecutive([1, 2, 3, 4, 6, 7, 8]));
+console.log(firstNonConsecutive([-3, -2,  0, 1, 2, 3, 8]));
+// console.log(firstNonConsecutive([1]));
+// console.log(firstNonConsecutive([-3, -2, 0, 1, 2]));
