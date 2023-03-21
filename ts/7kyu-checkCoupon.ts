@@ -23,27 +23,39 @@ export function checkCoupon(
   currentDate: string,
   expirationDate: string
 ): boolean {
-  // TODO: code me
   let isValidCorrect: boolean = false;
   let isValidExpired: boolean = true;
-  const MONTH_TABLE: string[] = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  // state1
   if (enteredCode === correctCode) {
     isValidCorrect = true;
+  } else {
+    isValidCorrect = false;
   }
-
-  return false;
+  const CURRENT_DATE = new Date(currentDate).getTime();
+  const EXPIRATION_DATE = new Date(expirationDate).getTime();
+  if (EXPIRATION_DATE - CURRENT_DATE >= 0) {
+    isValidExpired = true;
+  } else {
+    isValidExpired = false;
+  }
+  return isValidCorrect && isValidExpired;
 }
+
+console.log(
+  checkCoupon("123", "123", "September 5, 2014", "September 5, 2014")
+);
+
+
+
+/* 
+export function checkCoupon(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+  return enteredCode === correctCode && Date.parse(currentDate) <= Date.parse(expirationDate);
+}
+
+
+export function checkCoupon(enteredCode: string, correctCode: string, currentDate: string, expirationDate: string): boolean {
+  let cDate = new Date(currentDate);
+  let expDate = new Date(expirationDate);
+  return ((enteredCode === correctCode) && (cDate <= expDate)) ? true : false
+}
+
+*/
