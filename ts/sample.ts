@@ -16,6 +16,7 @@ For example:
 */
 
 export function goals(
+  
   laLigaGoals: number,
   copaDelReyGoals: number,
   championsLeagueGoals: number
