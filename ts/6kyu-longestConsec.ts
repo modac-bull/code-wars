@@ -67,6 +67,7 @@ export function longestConsec(strarr: string[], k: number): string {
   strarr.splice(strarr.indexOf(maxWord), 1);
   // strarr.indexOf(maxWord);
   console.log("strarr", strarr);
+  return 'test'
 }
 
 console.log(
