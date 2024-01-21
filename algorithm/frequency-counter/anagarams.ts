@@ -9,30 +9,34 @@ An anagram is a word, phrase, or name formed by rearranging the letters of anoth
 // 4. Solve/Simplify
 // 5. Look back and refactor
 
-function validAnagaram(str1: string, str2: string) {
+function validAnagram(str1: string, str2: string): boolean {
   if (str1.length !== str2.length) {
     return false;
   }
-  let frequencyCounter1 = {};
-  let frequencyCounter2 = {};
 
-  for (let char of str1) {
-    frequencyCounter1[char] = (frequencyCounter1[char] || 0) + 1;
+  let frequencyCounter1: { [key: string]: number } = {};
+  let frequencyCounter2: { [key: string]: number } = {};
+
+  for (let val of str1) {
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
   }
 
-  for (let char of str2) {
-    frequencyCounter2[char] = (frequencyCounter2[char] || 0) + 1;
+  for (let val of str2) {
+    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
   }
+
+  console.log(frequencyCounter1);
+  console.log(frequencyCounter2);
 
   for (let key in frequencyCounter1) {
-    console.log("key : ", key);
     if (!(key in frequencyCounter2)) {
       return false;
     }
-    if (frequencyCounter2[key] !== frequencyCounter1[key]) {
+
+    if (frequencyCounter1[key] !== frequencyCounter2[key]) {
       return false;
     }
   }
+
   return true;
 }
-console.log(validAnagaram("same", "mesa"));
